@@ -1,0 +1,61 @@
+<form
+  [formGroup]="todoForm"
+  class="d-flex justify-content-between"
+  (ngSubmit)="addTodo()"
+>
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Todo</mat-label>
+    <input class="p-2" type="text" matInput formControlName="body" />
+    <button
+      class="mx-3"
+      matSuffix
+      mat-fab
+      color="primary"
+      aria-label="Example icon button with a delete icon"
+      [disabled]="todoForm.invalid"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-form-field>
+</form>
+
+<div *ngFor="let todo of todoList">
+  <mat-card
+    class="w-100 my-3"
+    [ngClass]="{
+      'bg-secondary': todo.status === 'done',
+      'text-white': todo.status === 'done'
+    }"
+  >
+    <mat-card-content class="d-flex justify-content-between align-items-center">
+      <div>{{ todo.body }}</div>
+      <div class="example-button-container">
+        <button
+          class="mx-1"
+          (click)="updateTodoStatus(todo.id)"
+          mat-fab
+          color="primary"
+          aria-label="Icon button with a check icon"
+        >
+          <mat-icon>{{ todo.status === "todo" ? "check" : "cancel" }}</mat-icon>
+        </button>
+        <!-- <button
+          mat-fab
+          color="primary"
+          aria-label="Icon button with an edit icon"
+        >
+          <mat-icon>edit</mat-icon>
+        </button> -->
+        <button
+          class="mx-1"
+          (click)="deleteTodo(todo.id)"
+          mat-fab
+          color="primary"
+          aria-label="Icon button with a delete icon"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
