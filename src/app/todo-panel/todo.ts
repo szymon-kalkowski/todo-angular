@@ -5,3 +5,5 @@ export interface Todo {
   status: TodoStatus;
   body: string;
 }
+
+export type TodoOption = 'all' | 'todo' | 'done';

@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { TodoPanelService } from './todo-panel.service';
-import { Todo } from './todo';
+import { Todo, TodoOption } from './todo';
 import { v4 as uuidv4 } from 'uuid';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-todo-panel',
@@ -17,6 +22,8 @@ export class TodoPanelComponent {
 
   todoForm!: FormGroup;
   todoList: Todo[] = this.todoPanelService.todoList;
+  options: TodoOption[] = ['all', 'todo', 'done'];
+  selectedOption = new FormControl<TodoOption>('all');
 
   ngOnInit(): void {
     this.todoForm = this.fb.group({

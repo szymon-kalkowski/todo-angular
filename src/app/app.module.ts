@@ -11,11 +11,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterPipe } from './todo-panel/filter.pipe';
 
 @NgModule({
-  declarations: [AppComponent, TodoPanelComponent],
+  declarations: [AppComponent, TodoPanelComponent, FilterPipe],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -27,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
+    MatSelectModule,
     ReactiveFormsModule,
   ],
   providers: [],
